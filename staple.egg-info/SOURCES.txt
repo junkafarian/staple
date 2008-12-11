@@ -1,5 +1,6 @@
 setup.py
 staple/__init__.py
+staple/generator.py
 staple/publisher.py
 staple/tests.py
 staple.egg-info/PKG-INFO

@@ -16,7 +16,7 @@ def teardown():
 
 
 def test_render_page():
-    
+    pass
 
 
 def test_render_dir():
