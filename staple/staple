@@ -12,12 +12,14 @@ def main():
     if len(args) < 1:
         parser.error('must provide a template directory')
     
-    from publisher import publish
+    from publisher import Publisher
     
     if options.output_dir:
-        publish(args[0], options.output_dir)
+        runner = Publisher(args[1], options.output_dir)
+        runner()
     else:
-        publish(args[0])
+        runner = Publisher(args[1])
+        runner()
     
 
 if __name__ == "__main__":
