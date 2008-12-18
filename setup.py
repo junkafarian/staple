@@ -19,8 +19,10 @@ setup(name='staple',
       zip_safe=False,
       install_requires=[
           'jinja2',
+          'nose',
       ],
       entry_points="""
-      # -*- Entry points: -*-
+      [console_scripts]
+      main = staple.scripts:main
       """,
       )

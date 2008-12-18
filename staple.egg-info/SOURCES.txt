@@ -2,6 +2,7 @@ setup.py
 staple/__init__.py
 staple/generator.py
 staple/publisher.py
+staple/scripts.py
 staple/tests.py
 staple.egg-info/PKG-INFO
 staple.egg-info/SOURCES.txt

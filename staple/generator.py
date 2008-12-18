@@ -1,6 +1,9 @@
 from os import listdir, makedirs
 from os.path import abspath, isdir, isfile, join, exists
 import shutil
+import logging
+
+log = logging.getLogger('staple.generator')
 
 class Generator:
     
@@ -14,7 +17,6 @@ class Generator:
         self.template_dir = abspath('%s/templates' % __file__.rsplit('/',1)[0])
         cf = open(config_file, 'r')
         self.urls = cf.readlines()
-        print self.urls
         cf.close()
     
     def __call__(self):
@@ -23,7 +25,7 @@ class Generator:
         
     
     def generate_layout_files(self, urls):
-        print 'generating layout files', urls
+        log.debug('generating layout files %s' % urls)
         generated_files = []
         for url in urls:
             # try:

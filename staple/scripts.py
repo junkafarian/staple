@@ -35,6 +35,3 @@ def main():
         parser.error('invalid command')
     
 
-if __name__ == "__main__":
-    main()
-

@@ -1,6 +1,9 @@
 from os import listdir, makedirs
 from os.path import abspath, isdir, isfile, join, exists
 from jinja2 import Environment, FileSystemLoader
+import logging
+
+log = logging.getLogger('staple.publisher')
 
 class Publisher:
     
@@ -24,7 +27,7 @@ class Publisher:
         self.publishdir('./')
     
     def publishfile(self, path):
-        print 'publishing ', path
+        log.debug('publishing file %s' % path)
         template = self.template_env.get_template(path)
         
         # open the file
@@ -38,6 +41,7 @@ class Publisher:
     
     
     def publishdir(self, path):
+        log.debug('publishing directory %s' % path)
         if not exists(join(self.output_dir, path)):
             makedirs(join(self.output_dir, path))
         current_dir = join(self.template_dir, path)
