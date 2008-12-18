@@ -5,7 +5,7 @@ version = '0.2'
 
 setup(name='staple',
       version=version,
-      description="",
+      description="A script for publishing static websites from Jinja templates",
       long_description="""\
 """,
       classifiers=[], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers

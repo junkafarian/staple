@@ -1,11 +1,11 @@
 from tempfile import mkdtemp
-from os.path import join
+from os.path import join, dirname
 from os import rmdir
 
 from publisher import publish, publishdir, publishfile
 
 output_dir = mkdtemp()
-template_dir = join(__file__, 'templates')
+template_dir = join(dirname(__file__), 'templates')
 
 def buildup():
     pass
