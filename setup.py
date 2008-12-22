@@ -23,6 +23,6 @@ setup(name='staple',
       ],
       entry_points="""
       [console_scripts]
-      main = staple.scripts:main
+      staple = staple.scripts:main
       """,
       )

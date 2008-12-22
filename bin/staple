@@ -3,5 +3,5 @@ import sys
 from pkg_resources import load_entry_point
 
 sys.exit(
-   load_entry_point('staple', 'console_scripts', 'main')()
+   load_entry_point('staple', 'console_scripts', 'staple')()
 )
