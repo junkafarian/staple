@@ -11,3 +11,5 @@ staple.egg-info/entry_points.txt
 staple.egg-info/not-zip-safe
 staple.egg-info/requires.txt
 staple.egg-info/top_level.txt
+staple/templates/__init__.py
+staple/templates/one/__init__.py

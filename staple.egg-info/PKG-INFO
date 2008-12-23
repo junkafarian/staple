@@ -1,7 +1,7 @@
 Metadata-Version: 1.0
 Name: staple
-Version: 0.2
-Summary: UNKNOWN
+Version: 0.2.2
+Summary: A script for publishing static websites from Jinja templates
 Home-page: UNKNOWN
 Author: junkafarian
 Author-email: UNKNOWN

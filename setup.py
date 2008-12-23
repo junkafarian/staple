@@ -15,7 +15,7 @@ setup(name='staple',
       url='',
       license='',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
-      package_data = {'staple': ['*.html','*.layout'],}
+      package_data = {'staple': ['templates/*.*', 'templates/one/*.*'],},
       zip_safe=False,
       install_requires=[
           'jinja2',
