@@ -9,6 +9,9 @@ def main():
     
     (options, args) = parser.parse_args()
     
+    if len(args) == 0:
+        parser.error('must specify a command')
+    
     if args[0] == 'publish':
         if len(args) < 2:
             parser.error('must provide a template directory')
