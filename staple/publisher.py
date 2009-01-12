@@ -1,7 +1,10 @@
 from os import listdir, makedirs
 from os.path import abspath, isdir, isfile, join, exists
-from jinja2 import Environment, FileSystemLoader
+# from ConfigParser import ConfigParser
 import logging
+
+# dependencies
+from jinja2 import Environment, FileSystemLoader
 
 log = logging.getLogger('staple.publisher')
 
@@ -20,6 +23,11 @@ class Publisher:
         self.template_env = Environment(loader=FileSystemLoader(template_dir))
         
         if config_file:
+            # config = ConfigParser(
+            #         {''}
+            #     )
+            # 
+            # self.config = config
             # parse extra variables out of config file
             pass
     

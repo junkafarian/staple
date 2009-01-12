@@ -15,14 +15,15 @@ setup(name='staple',
       url='',
       license='',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
-      package_data = {'staple': ['templates/*.*', 'templates/one/*.*'],},
+      package_data = {'staple': ['*.sample', 'templates/*.*', 'templates/one/*.*'],},
       zip_safe=False,
       install_requires=[
           'jinja2',
-          'nose',
       ],
       entry_points="""
       [console_scripts]
       staple = staple.scripts:main
+      [paste.paster_create_template]
+      staple = staple.paster:StapleSiteTemplate
       """,
       )

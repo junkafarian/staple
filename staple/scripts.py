@@ -1,11 +1,10 @@
-#!/usr/bin/env python
-
 def main():
     from optparse import OptionParser
-    usage = "usage: %prog publish [--output=output_dir] template_dir"
-    usage += "\n      %prog generate output_dir structure_file"
+    usage = "usage: %prog publish [--output=output_dir] [--config=config_file] template_dir"
+    usage += "\n       %prog generate output_dir structure_file"
     parser = OptionParser(usage=usage)
     parser.add_option('-o', '--output', dest='output_dir')
+    parser.add_option('-c', '--config', dest='config_file')
     
     (options, args) = parser.parse_args()
     
@@ -19,10 +18,10 @@ def main():
         from publisher import Publisher
         
         if options.output_dir:
-            runner = Publisher(template_dir=args[1], output_dir=options.output_dir)
+            runner = Publisher(template_dir=args[1], output_dir=options.output_dir, config_file=options.config_file)
             runner()
         else:
-            runner = Publisher(template_dir=args[1])
+            runner = Publisher(template_dir=args[1], config_file=options.config_file)
             runner()
     
     elif args[0] == 'generate':

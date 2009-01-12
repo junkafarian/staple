@@ -1,0 +1,12 @@
+Welcome to your {{project}} staple project!
+
+There are some example templates in the `templates` folder:
+    
+    index.html      - Your home page
+    master.layout   - a layout template (this will not be included in your published site)
+    
+You can publish this example site by running:
+    
+    $ staple publish --output={{project}}/site {{project}}/templates
+    
+This will create rendered html pages in the `site` directory.

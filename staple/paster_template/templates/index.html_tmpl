@@ -1,0 +1,5 @@
+{% extends 'master.layout' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+Welcome to {{project}}
+{% endblock %}
