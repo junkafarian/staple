@@ -1,0 +1,12 @@
+<html>
+<head>
+    
+      <title>{{project}} | 2nd page</title>
+    
+</head>
+<body>
+    <div id="content">
+another page
+</div>
+</body>
+</html>

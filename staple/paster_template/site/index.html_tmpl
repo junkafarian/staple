@@ -1,0 +1,12 @@
+<html>
+<head>
+    
+      <title>{{project}} | Home</title>
+    
+</head>
+<body>
+    <div id="content">
+Welcome to {{project}}
+</div>
+</body>
+</html>
