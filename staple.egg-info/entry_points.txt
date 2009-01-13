@@ -1,6 +1,0 @@
-
-      [console_scripts]
-      staple = staple.scripts:main
-      [paste.paster_create_template]
-      staple = staple.paster:StapleSiteTemplate
-      

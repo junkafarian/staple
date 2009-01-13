@@ -15,7 +15,7 @@ def main():
         if len(args) < 2:
             parser.error('must provide a template directory')
         
-        from publisher import Publisher
+        from staple.publisher import Publisher
         
         if options.output_dir:
             runner = Publisher(template_dir=args[1], output_dir=options.output_dir, config_file=options.config_file)
@@ -28,7 +28,7 @@ def main():
         if len(args) < 3:
             parser.error('must provide an output directory and a configuration file')
         
-        from generator import Generator
+        from staple.generator import Generator
         
         runner = Generator(output_dir=args[1], config_file=args[2])
         runner()
