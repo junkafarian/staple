@@ -1,4 +1,4 @@
-from os import listdir, makedirs
+from os import listdir, makedirs, walk
 from os.path import abspath, isdir, isfile, join, exists
 # from ConfigParser import ConfigParser
 import logging
@@ -10,17 +10,15 @@ log = logging.getLogger('staple.publisher')
 
 class Publisher:
     
-    def __init__(self, template_dir, output_dir='./', config_file=None):
+    def __init__(self, template_dir, config_file=None):
         # check values
         if not isdir(template_dir):
             raise Exception("Template path does not exist: %s" % template_dir)
-        if not isdir(output_dir):
-            makedirs(output_dir)
         
         self.template_dir = abspath(template_dir)
-        self.output_dir = abspath(output_dir)
+        print 'using %s' % self.template_dir
         
-        self.template_env = Environment(loader=FileSystemLoader(template_dir))
+        self.template_env = Environment(loader=FileSystemLoader(self.template_dir))
         
         if config_file:
             # config = ConfigParser(
@@ -31,7 +29,11 @@ class Publisher:
             # parse extra variables out of config file
             pass
     
-    def __call__(self):
+    def __call__(self, output_dir='./'):
+        if not isdir(output_dir):
+            makedirs(output_dir)
+        self.output_dir = abspath(output_dir)
+        # publish the root
         self.publishdir('./')
     
     def publishfile(self, path):

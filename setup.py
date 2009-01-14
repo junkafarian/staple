@@ -19,6 +19,7 @@ setup(name='staple',
       zip_safe=False,
       install_requires=[
           'jinja2',
+          'nose',
       ],
       entry_points="""
       [console_scripts]
