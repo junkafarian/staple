@@ -16,7 +16,6 @@ class Publisher:
             raise Exception("Template path does not exist: %s" % template_dir)
         
         self.template_dir = abspath(template_dir)
-        print 'using %s' % self.template_dir
         
         self.template_env = Environment(loader=FileSystemLoader(self.template_dir))
         
@@ -34,7 +33,22 @@ class Publisher:
             makedirs(output_dir)
         self.output_dir = abspath(output_dir)
         # publish the root
-        self.publishdir('./')
+        #self.publishdir('./')
+        
+        for path, dirnames, filenames in walk(self.template_dir):
+            relative_path = path.replace(self.template_dir, '')
+            # make sure we have a value for the root folder
+            if not relative_path.startswith('/'):
+                relative_path = '/' + relative_path
+            # make it relative for os.path.join
+            relative_path = '.' + relative_path
+            for d in dirnames:
+                if not isdir(join(relative_path, d)) and not d.startswith(('.','_')):
+                    makedirs(join(relative_path, d))
+            for f in filenames:
+                if not f.startswith(('.','_')) and f.endswith('.html'):
+                    self.publishfile(join(relative_path, f))
+            
     
     def publishfile(self, path):
         log.debug('publishing file %s' % path)
@@ -50,7 +64,7 @@ class Publisher:
             self.publishdir(path.rsplit('/', 1)[0])
     
     
-    def publishdir(self, path):
+    def publishdir(self, path): # depricated
         log.debug('publishing directory %s' % path)
         if not exists(join(self.output_dir, path)):
             makedirs(join(self.output_dir, path))
