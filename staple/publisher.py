@@ -19,6 +19,9 @@ class Publisher:
         
         self.template_env = Environment(loader=FileSystemLoader(self.template_dir))
         
+        self.ignore_startswith = ('.','_')
+        self.ignore_endswith = ('layout','tmp','cache')
+        
         if config_file:
             # config = ConfigParser(
             #         {''}
@@ -32,9 +35,6 @@ class Publisher:
         if not isdir(output_dir):
             makedirs(output_dir)
         self.output_dir = abspath(output_dir)
-        # publish the root
-        #self.publishdir('./')
-        
         for path, dirnames, filenames in walk(self.template_dir):
             relative_path = path.replace(self.template_dir, '')
             # make sure we have a value for the root folder
@@ -43,10 +43,10 @@ class Publisher:
             # make it relative for os.path.join
             relative_path = '.' + relative_path
             for d in dirnames:
-                if not isdir(join(relative_path, d)) and not d.startswith(('.','_')):
+                if not isdir(join(relative_path, d)) and not d.startswith(self.ignore_startswith):
                     makedirs(join(relative_path, d))
             for f in filenames:
-                if not f.startswith(('.','_')) and f.endswith('.html'):
+                if not f.startswith(self.ignore_startswith) and f.endswith(self.ignore_endswith):
                     self.publishfile(join(relative_path, f))
             
     
