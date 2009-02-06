@@ -7,7 +7,7 @@ log = logging.getLogger('staple.generator')
 
 class Generator:
     
-    def __init__(self, output_dir, config_file):
+    def __init__(self, output_dir):
         
         if not isdir(output_dir):
             makedirs(output_dir)
@@ -15,13 +15,13 @@ class Generator:
         self.output_dir = abspath(output_dir)
         ##TODO: provide support for custom template dir
         self.template_dir = abspath('%s/templates' % __file__.rsplit('/',1)[0])
-        cf = open(config_file, 'r')
-        self.urls = cf.readlines()
-        cf.close()
     
-    def __call__(self):
+    def __call__(self, config_file):
+        cf = open(config_file, 'r')
+        urls = cf.readlines()
+        cf.close()
         self.generate_layout_files(('/master.layout',))
-        self.generate_template_files(self.urls)
+        self.generate_template_files(urls)
         
     
     def generate_layout_files(self, urls):
@@ -39,13 +39,21 @@ class Generator:
     
     def generate_template_files(self, urls):
         ##TODO: does not support generating folders
+<<<<<<< HEAD:staple/generator.py
         print 'generating template files\n\n* ' + '* '.join(urls)
         log.info('generating template files\n\n* ' + '* '.join(urls))
+=======
+        log.info('generating template files\n\n* ' + '\n* '.join(urls))
+>>>>>>> 682fe0181e58ebcbb6f0953157c6a2654352027c:staple/generator.py
         generated_files = []
         for url in urls:
             #try:
                 url = url.replace('\n','').lstrip('/')
-                shutil.copy('%s/index.html' % self.template_dir, '%s/%s' % (self.output_dir, url))
+                generation_path = '%s/%s' % (self.output_dir, url)
+                generation_dir = generation_path.rsplit('/',1)[0]
+                if not isdir(generation_dir):
+                    makedirs(generation_dir)
+                shutil.copy('%s/index.html' % self.template_dir, generation_path)
                 generated_files.append(url)
             # except:
             #     pass
