@@ -39,8 +39,8 @@ class Generator:
     
     def generate_template_files(self, urls):
         ##TODO: does not support generating folders
-        print 'generating template files', '* ' + '\n* '.join(urls)
-        log.info('generating template files\n\n* ' + '\n* '.join(urls))
+        print 'generating template files\n\n* ' + '* '.join(urls)
+        log.info('generating template files\n\n* ' + '* '.join(urls))
         generated_files = []
         for url in urls:
             #try:
