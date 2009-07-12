@@ -18,6 +18,8 @@ setup(name='staple',
       package_data = {'staple': ['*.sample', 'templates/*.*', 'templates/one/*.*'],},
       zip_safe=False,
       install_requires=[
+          'Paste',
+          'PasteScript',
           'jinja2',
           'nose',
       ],
