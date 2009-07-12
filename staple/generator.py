@@ -39,12 +39,7 @@ class Generator:
     
     def generate_template_files(self, urls):
         ##TODO: does not support generating folders
-<<<<<<< HEAD:staple/generator.py
-        print 'generating template files\n\n* ' + '* '.join(urls)
-        log.info('generating template files\n\n* ' + '* '.join(urls))
-=======
         log.info('generating template files\n\n* ' + '\n* '.join(urls))
->>>>>>> 682fe0181e58ebcbb6f0953157c6a2654352027c:staple/generator.py
         generated_files = []
         for url in urls:
             #try:
